@@ -1,0 +1,63 @@
+<% include partials/_header %>
+
+<div class="container" style="padding-top: 50px;">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="container">
+        <table class="table table-bordered table-striped table-hover table-dark">
+          <thead class="thead-dark">
+            <tr>
+              <td>#</td>
+              <td>Nombre</td>
+              <td>Direccion</td>
+              <td>Telefono</td>
+              <td>Funciones</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (data) { %>
+              <% for(var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= (i + 1) %></td>
+                  <td><%= data[i].name %></td>
+                  <td><%= data[i].address %></td>
+                  <td><%= data[i].phone %></td>
+                  <td>
+                    <div class="row">
+                      <a href="/update/<%= data[i].id %>" class="btn btn-info">Editar</a>
+                      <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Eliminar</a>
+                    </div>
+                  </td>
+                </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-5" >
+      <div class="container" style="padding-left: 80px;">
+        <div class="card-header text-white bg-success" >
+          Crear Cliente
+        </div>
+        <div class="card-body text-white bg-success" >
+          <form action="/add" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Nombre" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="address" placeholder="Direccion" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="phone" placeholder="Telefono" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-info">Guardar Cliente</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
