@@ -16,8 +16,10 @@
     "nodemon": "^1.17.3"
   },
   "scripts": {
+    "start": "nodemon src/app.js",
     "dev": "nodemon src/app.js"
   },
+  "heroku-run-build-script": true,
   "keywords": [],
   "author": "",
   "license": "ISC"
